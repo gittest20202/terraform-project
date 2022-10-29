@@ -1,9 +1,13 @@
 resource "aws_instance" "web1" {
+   count = var.instance_count
    ami = "${var.AMI}"
-   instance_type = "t2.micro"
+   instance_type = "${var.instance_type}"
    subnet_id = "${var.pubsub}"
    vpc_security_group_ids = ["${var.secid}"]
    key_name = "aws_key"
+   tags = {
+      Name = "Terraform-${count.index + 1}"
+      Batch = "5AM"
    provisioner "remote-exec" {
       inline = [
           "touch hello.txt",
