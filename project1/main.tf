@@ -21,8 +21,6 @@ provider "aws" {
   region     = "us-east-1"
   access_key = "${data.vault_aws_access_credentials.aws_creds.access_key}"
   secret_key = "${data.vault_aws_access_credentials.aws_creds.secret_key}"
-  # access_key = "AKIARWO2ZQUEFB2ZKG7J"
-  #secret_key = "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"
 }
 
 module "vpc_module" {
